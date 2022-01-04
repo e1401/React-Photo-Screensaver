@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 
 function Clock() {
   const [date, setDate] = useState(new Date());
-  console.log(date);
 
   function refreshClock() {
     setDate(new Date());

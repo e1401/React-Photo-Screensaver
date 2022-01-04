@@ -16,7 +16,7 @@ function Clock() {
 
   return (
     <div>
-      <p className="font-black text-right">{date.toLocaleTimeString()}</p>
+      <p className="font-black text-5xl text-center">{date.toLocaleTimeString()}</p>
     </div>
   );
 }

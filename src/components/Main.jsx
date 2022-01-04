@@ -24,7 +24,7 @@ function Main() {
         <p>Loading</p>
       ) : (
         <div
-          className="container mx-auto h-screen flex-col flex justify-end bg-no-repeat bg-cover"
+          className="container h-screen flex-col flex justify-end bg-no-repeat bg-cover bg-center"
           style={{ backgroundImage: `url(${picture})` }}
         >
           {/* TODO GET A PICTURE, PEXELS API */}

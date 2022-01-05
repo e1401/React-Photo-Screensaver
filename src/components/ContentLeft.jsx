@@ -14,7 +14,10 @@ function ContentLeft({ author, photoTitle, isLoading, averageColor, authorUrl })
         "
           style={{ filter: `invert(90%)` }}
         >
-          <strong>Author:</strong> <a href={authorUrl}>{author}</a>
+          <strong>Author:</strong>{' '}
+          <a href={authorUrl} rel="noreferrer" target="_blank">
+            {author}
+          </a>
         </p>
         <hr className="text-white" />
         <br />

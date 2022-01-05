@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-function Clock() {
+function Clock({ isLoading }) {
   const [date, setDate] = useState(new Date());
 
   function refreshClock() {
@@ -15,8 +15,13 @@ function Clock() {
   }, []);
 
   return (
-    <div>
-      <p className="font-black text-4xl text-center">{date.toLocaleTimeString()}</p>
+    <div className="bg-gray-50/10 rounded-lg p-5">
+      <p className="font-black text-slate-900 text-4xl text-center">
+        {date.toLocaleTimeString(navigator.language, {
+          hour: '2-digit',
+          minute: '2-digit',
+        })}
+      </p>
     </div>
   );
 }

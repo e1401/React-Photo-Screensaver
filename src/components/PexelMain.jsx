@@ -11,7 +11,7 @@ function PexelMain() {
   const [photoTitle, setPhotoTitle] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   //Average color state for left and right elements
-  const [averageColor, setAverageColor] = useState(null);
+  const [averageColor, setAverageColor] = useState('');
 
   //getRandom image from a non-radom Api
   function getRandomInt(min, max) {
@@ -63,19 +63,19 @@ function PexelMain() {
         );
 
         const data = await response.json();
-        console.log(data);
-        //   console.log(data.photos[0].src);
-        //   console.log(data.photos[0].photographer);
         setPicture(data.photos[0].src.landscape);
         setAuthor(data.photos[0].photographer);
         setAverageColor(data.photos[0].avg_color);
         setPhotoTitle(data.photos[0].alt);
         setIsLoading(false);
-        console.log(averageColor);
-        console.log(photoTitle);
+        // console.log(data);
+        //   console.log(data.photos[0].src);
+        //   console.log(data.photos[0].photographer);
+        // console.log(averageColor);
+        // console.log(photoTitle);
       };
       loadData();
-    }, 10000);
+    }, 20000);
 
     return () => clearInterval(interval);
   }, []);
@@ -84,21 +84,24 @@ function PexelMain() {
     <div
       className="container h-screen flex-col flex justify-end bg-no-repeat bg-cover bg-center"
       // style={{ backgroundImage: `url(${picture})` }}
-      style={
-        isLoading ? { backgroundColor: `${averageColor}` } : { backgroundImage: `url(${picture})` }
-      }
+      style={isLoading ? { backgroundColor: 'white' } : { backgroundImage: `url(${picture})` }}
     >
-      <div
-        className="container h-1/4 flex-row flex justify-between"
-        // style={{ backgroundColor: 'grey' }}
-      >
-        <div className="h-3/4 w-1/4" style={{ backgroundColor: `${averageColor}` }}>
-          <ContentLeft author={author} photoTitle={photoTitle} />
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : (
+        <div className="container h-1/4 flex-row flex justify-between">
+          <div>
+            <ContentLeft
+              averageColor={averageColor}
+              isLoading={isLoading}
+              author={author}
+              photoTitle={photoTitle}
+            />
+          </div>
+
+          <ContentRight averageColor={averageColor} isLoading={isLoading} />
         </div>
-        <div className="h-3/4 w-1/4" style={{ backgroundColor: `${averageColor}` }}>
-          <ContentRight />
-        </div>
-      </div>
+      )}
     </div>
   );
 }

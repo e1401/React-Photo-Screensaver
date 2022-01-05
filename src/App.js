@@ -1,11 +1,10 @@
 import './index.css';
-import PexelMain from './components/PexelMain';
+import Main from './components/Main';
 
 function App() {
   return (
     <div>
-      {/* <Rain /> */}
-      <PexelMain />
+      <Main />
     </div>
   );
 }

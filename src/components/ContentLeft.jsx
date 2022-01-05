@@ -1,4 +1,4 @@
-function ContentLeft({ author, photoTitle, isLoading, averageColor }) {
+function ContentLeft({ author, photoTitle, isLoading, averageColor, authorUrl }) {
   return (
     <div
       className="flex flex-col flex-wrap w-full justify-center items-start p-10"
@@ -14,7 +14,7 @@ function ContentLeft({ author, photoTitle, isLoading, averageColor }) {
         "
           style={{ filter: `invert(90%)` }}
         >
-          <strong>Author:</strong> {author}
+          <strong>Author:</strong> <a href={authorUrl}>{author}</a>
         </p>
         <hr className="text-white" />
         <br />

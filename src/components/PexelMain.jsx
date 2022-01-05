@@ -20,32 +20,64 @@ function PexelMain() {
     return Math.floor(Math.random() * (max - min));
   }
 
-  useEffect(() => {
-    const loadData = async () => {
-      const response = await fetch(
-        `https://api.pexels.com/v1/curated?page=${getRandomInt(1, 99)}&per_page=1`,
-        {
-          method: 'GET',
-          headers: {
-            Accept: 'application/json',
-            Authorization: apiKey,
-          },
-        },
-      );
+  // useEffect(() => {
+  //   const loadData = async () => {
+  //     const response = await fetch(
+  //       `https://api.pexels.com/v1/curated?page=${getRandomInt(1, 99)}&per_page=1`,
+  //       {
+  //         method: 'GET',
+  //         headers: {
+  //           Accept: 'application/json',
+  //           Authorization: apiKey,
+  //         },
+  //       },
+  //     );
 
-      const data = await response.json();
-      console.log(data);
-      //   console.log(data.photos[0].src);
-      //   console.log(data.photos[0].photographer);
-      setPicture(data.photos[0].src.landscape);
-      setAuthor(data.photos[0].photographer);
-      setAverageColor(data.photos[0].avg_color);
-      setPhotoTitle(data.photos[0].alt);
-      setIsLoading(false);
-      console.log(averageColor);
-      console.log(photoTitle);
-    };
-    loadData();
+  //     const data = await response.json();
+  //     console.log(data);
+  //     //   console.log(data.photos[0].src);
+  //     //   console.log(data.photos[0].photographer);
+  //     setPicture(data.photos[0].src.landscape);
+  //     setAuthor(data.photos[0].photographer);
+  //     setAverageColor(data.photos[0].avg_color);
+  //     setPhotoTitle(data.photos[0].alt);
+  //     setIsLoading(false);
+  //     console.log(averageColor);
+  //     console.log(photoTitle);
+  //   };
+  //   loadData();
+  // }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const loadData = async () => {
+        const response = await fetch(
+          `https://api.pexels.com/v1/curated?page=${getRandomInt(1, 99)}&per_page=1`,
+          {
+            method: 'GET',
+            headers: {
+              Accept: 'application/json',
+              Authorization: apiKey,
+            },
+          },
+        );
+
+        const data = await response.json();
+        console.log(data);
+        //   console.log(data.photos[0].src);
+        //   console.log(data.photos[0].photographer);
+        setPicture(data.photos[0].src.landscape);
+        setAuthor(data.photos[0].photographer);
+        setAverageColor(data.photos[0].avg_color);
+        setPhotoTitle(data.photos[0].alt);
+        setIsLoading(false);
+        console.log(averageColor);
+        console.log(photoTitle);
+      };
+      loadData();
+    }, 10000);
+
+    return () => clearInterval(interval);
   }, []);
 
   return (

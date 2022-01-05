@@ -16,10 +16,7 @@ function Clock() {
 
   return (
     <div className="bg-gray-50/10 rounded-lg p-5">
-      <p
-        className="font-black text-slate-900 text-4xl text-center"
-        style={{ filter: `invert(100%)` }}
-      >
+      <p className=" text-4xl text-center" style={{ filter: `invert(100%)` }}>
         {date.toLocaleTimeString(navigator.language, {
           hour: '2-digit',
           minute: '2-digit',

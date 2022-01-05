@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import ContentLeft from './ContentLeft';
 import ContentRight from './ContentRight';
+import SampleImg from '../img/sample.jpg';
 // TODO attribution
 
 function PexelMain() {
@@ -75,7 +76,7 @@ function PexelMain() {
         // console.log(photoTitle);
       };
       loadData();
-    }, 9000);
+    }, 30000);
 
     return () => clearInterval(interval);
   }, []);
@@ -87,9 +88,16 @@ function PexelMain() {
       style={isLoading ? { backgroundColor: 'white' } : { backgroundImage: `url(${picture})` }}
     >
       {isLoading ? (
-        <p>Loading...</p>
+        <div
+          className="container h-screen flex-col flex justify-end bg-no-repeat bg-cover bg-center"
+          style={{ backgroundImage: `url(${SampleImg})` }}
+        >
+          <div className="justify-between">
+            <h2 className="text-3xl">Loading...</h2>
+          </div>
+        </div>
       ) : (
-        <div className="container h-1/4 flex-row flex justify-between">
+        <div className="container max-w-full min-h-max flex-row flex justify-between opacity-70">
           <div>
             <ContentLeft
               averageColor={averageColor}

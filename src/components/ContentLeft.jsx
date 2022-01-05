@@ -1,5 +1,10 @@
-function ContentLeft(props) {
-  return <div>Content left, and {props.title}</div>;
+function ContentLeft({ author, photoTitle }) {
+  return (
+    <div>
+      <p>Author: {author}</p>
+      <p>Title: {photoTitle}</p>
+    </div>
+  );
 }
 
 export default ContentLeft;

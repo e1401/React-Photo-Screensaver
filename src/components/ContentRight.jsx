@@ -1,15 +1,9 @@
 import Clock from './Clock';
 
-function ContentRight({ author }) {
+function ContentRight() {
   return (
     <div>
       <Clock />
-      <p
-        className="pt-6
-      "
-      >
-        Author: {author}
-      </p>
     </div>
   );
 }

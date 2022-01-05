@@ -75,7 +75,7 @@ function PexelMain() {
         // console.log(photoTitle);
       };
       loadData();
-    }, 20000);
+    }, 9000);
 
     return () => clearInterval(interval);
   }, []);
